@@ -15,7 +15,7 @@ Matrícula: 885732
 
 ![Resultado da Query SELECT no pgAdmin](imagens/p2ii.jpg)
 
-## Produto 3: Integração com Serviços em Nuvem (Opção B - Adaptada)
+## Produto 3: Integração com Serviços em Nuvem (Opção B)
 
 ### Entregável i: Recurso Cognitivo 
 
@@ -25,5 +25,6 @@ Matrícula: 885732
 
 O código Java foi implementado para consumir o banco de dados Azure PostgreSQL e incluir lógica de IA simulada.
 
-**Arquivo-Chave para a Conexão:** **Arquivo-Chave para a Conexão (Consumo da Nuvem):** [DAO.java](src/main/java/dao/DAO.java)
+[DAO.java](src/main/java/dao/DAO.java)
 
+[PesquisarEventosPorDataServlet.java](src/main/java/app/PesquisarEventosPorDataServlet.java)
