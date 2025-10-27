@@ -9,15 +9,24 @@ import model.Informacoes;
 public class EventoService {
 
     private InformacoesDAO dao;
+    private AzureAIServiceMock azureAIService; 
 
     public EventoService() {
         dao = new InformacoesDAO();
+        azureAIService = new AzureAIServiceMock(); 
     }
 
     public boolean inserirEvento(Informacoes info) {
         if (info.getNome() == null || info.getNome().trim().isEmpty()) {
             throw new IllegalArgumentException("O nome do evento não pode ser vazio.");
         }
+        
+        String descricao = info.getDescricao();
+        String sentimento = azureAIService.analisarSentimento(descricao);
+        
+        System.out.println("-> Sentimento Simuladamente Analisado pelo Azure AI: " + sentimento);
+        
+        info.setNome(info.getNome() + " [" + sentimento + "]"); 
 
         if (info.getData() == null || info.getData().trim().isEmpty()) {
             throw new IllegalArgumentException("A data do evento é obrigatória.");

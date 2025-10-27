@@ -13,23 +13,23 @@ public class DAO {
 	
 	public boolean conectar() {
 		String driverName = "org.postgresql.Driver";                    
-		String serverName = "localhost";
-		String mydatabase = "PAGINACOMPROMISSOS";
+		String serverName = "exerciciotigabteo.postgres.database.azure.com"; 
+		String mydatabase = "postgres"; 
 		int porta = 5432;
 		String url = "jdbc:postgresql://" + serverName + ":" + porta +"/" + mydatabase;
-		String username = "postgres";
-		String password = "100407";
+		String username = "gabrielteotonio"; 
+		String password = "Ga249921@"; 
 		boolean status = false;
 
 		try {
 			Class.forName(driverName);
 			conexao = DriverManager.getConnection(url, username, password);
-			status = (conexao == null);
-			System.out.println("Conexão efetuada com o postgres!");
+			status = (conexao != null);
+			System.out.println("Conexão efetuada com o Azure PostgreSQL!");
 		} catch (ClassNotFoundException e) { 
-			System.err.println("Conexão NÃO efetuada com o postgres -- Driver não encontrado -- " + e.getMessage());
+			System.err.println("Conexão NÃO efetuada -- Driver não encontrado -- " + e.getMessage());
 		} catch (SQLException e) {
-			System.err.println("Conexão NÃO efetuada com o postgres -- " + e.getMessage());
+			System.err.println("Conexão NÃO efetuada -- ERRO SQL: " + e.getMessage());
 		}
 
 		return status;
@@ -39,8 +39,10 @@ public class DAO {
 		boolean status = false;
 		
 		try {
-			conexao.close();
-			status = true;
+			if (conexao != null && !conexao.isClosed()) {
+				conexao.close();
+				status = true;
+			}
 		} catch (SQLException e) {
 			System.err.println(e.getMessage());
 		}
