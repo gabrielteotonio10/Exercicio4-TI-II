@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciamento de Eventos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Sistema de Gerenciamento de amor</h1>
+            <p>Cadastre, liste e pesquise seus eventos</p>
+        </div>
+
+        <!-- Seção de Cadastro -->
+        <div class="section">
+            <h2>Cadastrar Evento</h2>
+            <form id="eventForm" action="/inserirEvento" method="post">
+                <div class="form-group">
+                    <label for="eventName">Nome do Evento:</label>
+                    <input type="text" id="eventName" name="nome" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="eventDescription">Descrição:</label>
+                    <textarea id="eventDescription" name="descricao" required></textarea>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="eventDate">Data:</label>
+                        <input type="date" id="eventDate" name="data" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="eventTime">Hora:</label>
+                        <input type="time" id="eventTime" name="hora" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn">Cadastrar Evento</button>
+            </form>
+        </div>
+
+        <!-- Seção de Exclusão -->
+        <div class="section">
+            <h2>Excluir Evento</h2>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="deleteDate">Data do Evento:</label>
+                    <input type="date" id="deleteDate" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="deleteName">Nome do Evento:</label>
+                    <input type="text" id="deleteName" required>
+                </div>
+            </div>
+            <button onclick="deleteEvent()" class="btn btn-danger">Excluir Evento</button>
+        </div>
+
+        <!-- Seção de Pesquisa -->
+        <div class="section">
+            <h2>Pesquisar Eventos por Data</h2>
+            <div class="form-group">
+                <label for="searchDate">Data:</label>
+                <input type="date" id="searchDate">
+            </div>
+            <button onclick="searchEventsByDate()" class="btn">Pesquisar</button>
+
+            <div id="searchResults" class="search-results"></div>
+        </div>
+
+        <!-- Seção de Listagem -->
+        <div class="section">
+            <h2>Todos os Eventos</h2>
+            <div id="eventsList"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
